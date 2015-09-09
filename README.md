@@ -2,9 +2,9 @@
 
  Two simple nodes that can be used as mediators for shell commands.
 
-    Author: André Dietrich
+    Author: André Dietrich & Sebastian Zug
     License: BSD
-    Source:
+    Source: https://gitlab.com/andre-dietrich/rosshell
 
 ## 1. Overview
 
