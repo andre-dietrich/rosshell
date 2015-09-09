@@ -1,0 +1,17 @@
+<launch>
+
+	<!--
+	Let's make some noise... you can simply start any application you want, by putting in the commandline pararmeter
+	as a string...
+	
+	examples:
+	rosrun rosshell rosshell.py "aplay -c 2 -f S16_LE -r 44100 /dev/urandom"
+	rosrun rosshell rosshell.py "cat /dev/random > test.txt"
+	...
+	
+	If you require some interaction with STDIN and STDOUT, use rosshellX.py
+	
+	-->
+	<node pkg="rosshell" type="rosshell.py" name="rosshell" args='"aplay -c 2 -f S16_LE -r 44100 /dev/urandom"' />
+
+</launch>
