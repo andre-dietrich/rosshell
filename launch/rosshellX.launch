@@ -2,33 +2,33 @@
 
 	<!--
 	rosshellX.py is subscribed to /rosshellX/stdin and publishes the topic /rosshellX/stdout and /rosshellX/stderr, all of type std_msgs/String.
-	
+
 	bc is just a simple commandline-calculator
-	
+
 	1. run this launch-file
 	2. print the the results of bc: rostopic echo /bc/stdout
-	                                rostopic echo /bc/stderr                   
+	                                rostopic echo /bc/stderr
 	3. and now, send some inputs like:
 	rostopic pub /bc/stdin std_msgs/String "99*99\n"
 	rostopic pub /pc/stdin std_msgs/String "sqrt(2.0)\n"
-	
-	the following command returns an error, thus, only if you are subscribed to stderr, you can read the ouputs 
+
+	the following command returns an error, thus, only if you are subscribed to stderr, you can read the ouputs
 	rostopic pub /pc/stdin std_msgs/String "adfg42&/\n\n"
-	
+
 	...
-	
+
 	every shellcommand is allowed, try for example
-	
+
 	rosrun rosshell rosshellX.py "ls -Shal"
 	rosrun rosshell rosshellX.py _command:="ls -Shal"
-	
+
 	to get some filesystem-information ...
 	-->
 	<node pkg="rosshell" type="rosshellX.py" name="rosshellBC">
 		<param name="command" type="String" value="bc" />
-		<param name="stdout" type="String" value="bc/stdout" />
-		<param name="stdin" type="String" value="bc/stdin" />
-		<param name="stderr" type="String" value="bc/stderr" />
+		<param name="stdout"  type="String" value="bc/stdout" />
+		<param name="stdin"   type="String" value="bc/stdin" />
+		<param name="stderr"  type="String" value="bc/stderr" />
 	</node>
 
 </launch>
