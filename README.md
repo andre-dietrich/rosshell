@@ -2,15 +2,16 @@
 
  Two simple nodes that can be used as mediators for shell commands.
 
-    Author: André Dietrich & Sebastian Zug
+    Author: André Dietrich
     License: BSD
-    Source: https://gitlab.com/andre-dietrich/rosshell
+    Source: https://github.com/andre-dietrich/rosshell
 
 ## 1. Overview
 
-This package provides the two nodes, that enable to run and interact with different non-ros-programs. rosshell can be used to start a program or any kind
-of shell-command. If some kind of interaction with the programs is required,
-use rosshellX to receive and send messages from stdin, stdout, and stderr.
+This package provides the two nodes, that enable to run and interact with
+different non-ros-programs. rosshell can be used to start a program or any kind
+of shell-command. If some kind of interaction with the programs is required, use
+rosshellX to receive and send messages from stdin, stdout, and stderr.
 
 ## 2. Usage
 
@@ -51,8 +52,8 @@ $ rosrun rosshell rosshell.py "ls -Shal > test.txt"
 This node is used if you require some interaction with stdin, stdout, and
 stderr.
 
-rosshellX is by default subscribed to /rosshellX/stdin and publishes at topic
-/rosshellX/stdout and /rosshellX/stderr, all of type std_msgs/String.
+rosshellX is by default subscribed to `/rosshellX/stdin` and publishes at topic
+`/rosshellX/stdout` and `/rosshellX/stderr`, all of type `std_msgs/String`.
 
 ### 3.2.1 Some basic calculations
 
@@ -61,16 +62,19 @@ bc is just a simple commandline-calculator
 1. open three shells
 
 2. start bc with the following command:
+
    ```bash
    $ rosrun rosshell rosshellX.py "bc"
    ```
 
 3. print the the results of bc stdout by running:
+
    ```bash
    $ rostopic echo /rosshellX/stdout
    ```
 
 4. and now, send some inputs like:
+
    ```bash
    $ rostopic pub /rosshellX/stdin std_msgs/String "99*99\n"
    $ rostopic pub /rosshellX/stdin std_msgs/String "sqrt(2.0)\n"
@@ -79,10 +83,13 @@ bc is just a simple commandline-calculator
    ```
 
 5. to interact a bit with stderr, simply subscribe for:
+
    ```bash
    $ rostopic echo /rosshellX/stderr
    ```
+
    and publish some nonsense like
+
    ```bash
    $ rostopic pub /rosshellX/stdin std_msgs/String "wtf\n"
    ```
@@ -120,32 +127,35 @@ Allows to run commands with no interaction possibilities.
 Allows to run commands and enables an interaction over stdin and stdout.
 
 #### 4.2.1 Subscribed Topics
-/rosshellX/stdin (std_msgs/String)
+
+`/rosshellX/stdin (std_msgs/String)`
 
 The standard topic for stdin.
 
 #### 4.2.2 Published Topics
-/rosshellX/stdout (std_msgs/String)
+
+`/rosshellX/stdout (std_msgs/String)`
 
 The current line of the stdout.
 
-/rosshellX/stderr (std_msgs/String)
+`/rosshellX/stderr (std_msgs/String)`
 
 The current line of the stderr.
 
 #### 4.2.3 Parameters
-command (string, default: "")
+
+`command (string, default: "")`
 
 Commands that will be executed.
 
-stdout (string, default: /rosshellX/stdout)
+`stdout (string, default: /rosshellX/stdout)`
 
-Change the topic for stdout.
+Change the topic for `stdout`.
 
-stdin (string, default: /rosshellX/stdin)
+`stdin (string, default: /rosshellX/stdin)`
 
 Change the topic for stdin.
 
-stderr (string, default: /rosshellX/stderr)
+`stderr (string, default: /rosshellX/stderr)`
 
-Change the topic for stderr.
+Change the topic for `stderr`.
